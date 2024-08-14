@@ -3,6 +3,8 @@ const cors = require("cors");
 const env = require("dotenv");
 const mongoose = require("mongoose");
 
+const userRoutes = require("./src/routes/user.route");
+
 const app = express();
 env.config();
 
@@ -20,6 +22,9 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api", userRoutes);
+
 app.listen(process.env.PORT, () => {
   console.log(`server running on ${process.env.PORT}`);
 });
